@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -44,4 +45,15 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    val roomVersion = "2.7.1"
+    val lifecycleVersion = "2.7.0"
+    val recyclerVersion = "1.3.2"
+    val coroutineVersion = "1.7.3"
+    implementation("androidx.room:room-runtime:${roomVersion}")
+    implementation("androidx.room:room-ktx:${roomVersion}")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:${lifecycleVersion}")
+    implementation("androidx.recyclerview:recyclerview:${recyclerVersion}")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutineVersion}")
+    ksp("androidx.room:room-compiler:2.5.0")
 }
