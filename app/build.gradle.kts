@@ -5,11 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.todoapp"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.todoapp"
@@ -34,6 +30,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -46,14 +47,15 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    val roomVersion = "2.7.1"
+    val roomVersion = "2.7.0-alpha11"
     val lifecycleVersion = "2.7.0"
     val recyclerVersion = "1.3.2"
     val coroutineVersion = "1.7.3"
     implementation("androidx.room:room-runtime:${roomVersion}")
     implementation("androidx.room:room-ktx:${roomVersion}")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:${lifecycleVersion}")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${lifecycleVersion}")
     implementation("androidx.recyclerview:recyclerview:${recyclerVersion}")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutineVersion}")
-    ksp("androidx.room:room-compiler:2.5.0")
+    ksp("androidx.room:room-compiler:${roomVersion}")
 }
